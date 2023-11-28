@@ -3,6 +3,7 @@
 Module with the pascals triangle generator
 """
 
+
 def pascal_triangle(n):
     """generate a list of lists with pascal triangle"""
     triangle = []
