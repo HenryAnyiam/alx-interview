@@ -1,1 +1,1 @@
-#Project 0x00 - Pascal Triangle
+# Project 0x00 - Pascal Triangle
