@@ -14,17 +14,19 @@ def canUnlockAll(boxes):
     keys.add(0)
     unlock = True
     all_box = [i for i in range(length)]
+    unlocked = keys
     while unlock:
-        hold = keys
+        hold = set()
         for i in keys:
             try:
                 hold = hold.union(set(boxes[i]))
             except (IndexError, TypeError) as e:
                 pass
-        if len(hold) > len(keys):
+        if not hold.issubset(unlocked):
             keys = hold
+            unlocked = unlocked.union(keys)
         else:
             unlock = False
-    if keys != set(all_box):
+    if unlocked != set(all_box):
         return False
     return True
