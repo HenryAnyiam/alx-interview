@@ -11,6 +11,8 @@ def canUnlockAll(boxes):
         return True
     locked = length - 1
     keys = set(boxes[0]) if isinstance(boxes[0], list) else None
+    if not keys:
+        return False
     keys.add(0)
     unlock = True
     all_box = [i for i in range(length)]
