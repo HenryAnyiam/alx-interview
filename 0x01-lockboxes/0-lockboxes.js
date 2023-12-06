@@ -14,8 +14,5 @@ export default function canUnlockAll(boxes) {
             }
         }
     }
-    if (unlocked.length !== length) {
-        return false
-    }
-    return true;
+    return unlocked.length === length;
 }

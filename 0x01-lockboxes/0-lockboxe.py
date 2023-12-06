@@ -12,8 +12,8 @@ def canUnlockAll(boxes):
     keys = set(boxes[0]) if isinstance(boxes[0], list) else None
     keys.add(0)
     unlock = True
-    all_box = [i for i in range(length)]
     unlocked = keys
+    expected_keys = [i for i in range(length)]
     while unlock:
         hold = set()
         for i in keys:
@@ -26,6 +26,4 @@ def canUnlockAll(boxes):
             unlocked = unlocked.union(keys)
         else:
             unlock = False
-    if unlocked != set(all_box):
-        return False
-    return True
+    return set(expected_keys).issubset(unlocked)

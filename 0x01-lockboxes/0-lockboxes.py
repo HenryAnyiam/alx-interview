@@ -15,6 +15,4 @@ def canUnlockAll(boxes):
         for key in value:
             if (key < length) and (key not in unlocked) and (key != index):
                 unlocked.add(key)
-    if len(unlocked) != length:
-        return False
-    return True
+    return len(unlocked) != length
