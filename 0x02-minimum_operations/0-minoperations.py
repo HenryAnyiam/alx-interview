@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module to handle minimum operations"""
 
+
 def is_prime(number):
     """check if a number is a prime number"""
     if number < 2:
