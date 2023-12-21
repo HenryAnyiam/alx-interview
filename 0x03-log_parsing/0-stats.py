@@ -9,7 +9,7 @@ def verify_line(line):
     """verify a line fits a particular syntax"""
     data = {}
     status = [200, 301, 400, 401, 403, 404, 405, 500]
-    if isinstance(line, str):
+    if line and isinstance(line, str):
         lineBreak = line.split()
         if len(lineBreak) == 9:
             data['ip'] = lineBreak[0]
@@ -17,8 +17,7 @@ def verify_line(line):
             data['req'] = ' '.join(lineBreak[4:7])
             data['status'] = lineBreak[7]
             data['size'] = lineBreak[8]
-            if len(data['ip'].split('.')) == 4 and\
-               data['req'].strip('"') == "GET /projects/260 HTTP/1.1":
+            if data['req'].strip('"') == "GET /projects/260 HTTP/1.1":
                 if len(data['date']) == 28:
                     data['date'] = (data['date'][1:-2] + '0')
                 try:
