@@ -36,24 +36,29 @@ def displayData(status, fileSize):
     """display data to output"""
     print(f"File size: {fileSize}")
     fileSize = 0
-    for j in status:
+    stats = sorted(status)
+    for j in stats:
         if status[j] > 0:
             print(f"{j}: {status[j]}")
 
 
-i = 0
-status = {200: 0, 301: 0, 400: 0, 401: 0,
-          403: 0, 404: 0, 405: 0, 500: 0}
-fileSize = 0
-try:
-    for line in stdin:
-        data = verify_line(line)
-        if data:
-            fileSize += data['size']
-            status[data['status']] += 1
-            i += 1
-        if i == 10:
-            displayData(status, fileSize)
-            i = 0
-except KeyboardInterrupt:
-    displayData(status, fileSize)
+if __name__ == "__main__":
+    i = 0
+    status = {200: 0, 301: 0, 400: 0, 401: 0,
+              403: 0, 404: 0, 405: 0, 500: 0}
+    fileSize = 0
+    try:
+        for line in stdin:
+            data = verify_line(line)
+            if data:
+                fileSize += data['size']
+                status[data['status']] += 1
+                i += 1
+            if i == 10:
+                displayData(status, fileSize)
+                i = 0
+    except KeyboardInterrupt:
+        displayData(status, fileSize)
+        raise
+    else:
+        displayData(status, fileSize)
