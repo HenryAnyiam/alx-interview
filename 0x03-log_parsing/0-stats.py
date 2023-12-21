@@ -25,7 +25,7 @@ def verify_line(line):
                     data['status'] = int(data['status'])
                     data['size'] = int(data['size'])
                 except ValueError as e:
-                    print(e)
+                    pass
                 else:
                     if data['status'] in status:
                         return data
