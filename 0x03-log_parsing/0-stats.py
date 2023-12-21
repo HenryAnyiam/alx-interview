@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""A module for simple log parsing"""
 
 from sys import stdin
 from datetime import datetime
