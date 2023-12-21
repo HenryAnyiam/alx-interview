@@ -11,20 +11,20 @@ def verify_line(line):
     status = [200, 301, 400, 401, 403, 404, 405, 500]
     if line and isinstance(line, str):
         lineBreak = line.split()
-        if len(lineBreak) == 9:
-            data['ip'] = lineBreak[0]
-            data['date'] = ' '.join(lineBreak[2:4])
-            data['req'] = ' '.join(lineBreak[4:7])
-            data['status'] = lineBreak[7]
-            data['size'] = lineBreak[8]
-            try:
-                data['status'] = int(data['status'])
-                data['size'] = int(data['size'])
-            except ValueError:
-                pass
-            else:
-                if data['status'] in status:
-                    return data
+        # if len(lineBreak) == 9:
+        #     data['ip'] = lineBreak[0]
+        #     data['date'] = ' '.join(lineBreak[2:4])
+        #     data['req'] = ' '.join(lineBreak[4:7])
+        #     data['status'] = lineBreak[7]
+        #     data['size'] = lineBreak[8]
+        try:
+            data['status'] = int(lineBreak[-2])
+            data['size'] = int(lineBreak[-1])
+        except (ValueError, IndexError):
+            pass
+        else:
+            if data['status'] in status:
+                return data
 
 
 def displayData(status, fileSize):
