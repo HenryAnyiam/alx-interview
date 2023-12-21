@@ -17,18 +17,14 @@ def verify_line(line):
             data['req'] = ' '.join(lineBreak[4:7])
             data['status'] = lineBreak[7]
             data['size'] = lineBreak[8]
-            if data['req'].strip('"') == "GET /projects/260 HTTP/1.1":
-                if len(data['date']) == 28:
-                    data['date'] = (data['date'][1:-2] + '0')
-                try:
-                    data['date'] = datetime.fromisoformat(data['date'])
-                    data['status'] = int(data['status'])
-                    data['size'] = int(data['size'])
-                except ValueError as e:
-                    pass
-                else:
-                    if data['status'] in status:
-                        return data
+            try:
+                data['status'] = int(data['status'])
+                data['size'] = int(data['size'])
+            except ValueError:
+                pass
+            else:
+                if data['status'] in status:
+                    return data
 
 
 def displayData(status, fileSize):
