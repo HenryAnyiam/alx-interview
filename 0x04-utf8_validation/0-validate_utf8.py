@@ -34,7 +34,7 @@ def validUTF8(data):
         elif 240 <= data[i] <= 247:
             if ((i + 4) >= length or not check_range((i + 1), (i + 4), data)):
                 return False
-            i + 4
+            i += 4
         else:
             return False
     return True
