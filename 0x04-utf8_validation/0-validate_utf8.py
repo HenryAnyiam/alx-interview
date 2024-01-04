@@ -6,7 +6,7 @@ def check_range(start, end, arr):
     """check that the characters between start
     and end fall between 128 and 191"""
     while start < end:
-        if not (128 >= arr[start] <= 191):
+        if not (128 <= arr[start] <= 191):
             return False
         start += 1
     return True
