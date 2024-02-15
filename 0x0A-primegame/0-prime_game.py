@@ -43,6 +43,7 @@ def play(num: int) -> str:
 
 
 def isWinner(x: int, nums: list) -> str:
+    """find winner of prime game"""
     players = {"Maria": 0, "Ben": 0}
     if not isinstance(x, int) or not isinstance(nums, list):
         return None
