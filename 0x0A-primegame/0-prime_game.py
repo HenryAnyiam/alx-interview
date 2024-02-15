@@ -15,13 +15,14 @@ def get_primes(num: int) -> int:
     prime = True
     if num < 2:
         return primes
-    for i in range(2, num):
+    for i in range(2, num + 1):
         for j in range(2, i):
             if i % j == 0:
                 prime = False
                 break
         if prime:
             primes.append(i)
+        prime = True
     return primes
 
 
@@ -30,7 +31,7 @@ def play(num: int) -> str:
     if num <= 1:
         return "Ben"
     player = "Maria"
-    num_range = [i for i in range(1, num)]
+    num_range = [i for i in range(1, num + 1)]
     primes = get_primes(num)
     while primes:
         pick = primes.pop(0)
