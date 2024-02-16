@@ -48,7 +48,7 @@ def isWinner(x: int, nums: list) -> str:
     players = {"Maria": 0, "Ben": 0}
     if not isinstance(x, int) or not isinstance(nums, list):
         return None
-    if x > len(nums):
+    if x > len(nums) or x < 1:
         return None
     for i in range(x):
         if not isinstance(nums[i], int):
